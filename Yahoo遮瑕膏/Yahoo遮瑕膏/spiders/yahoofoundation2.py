@@ -8,7 +8,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class Yahoofoundation2Spider(scrapy.Spider):
     name = 'yahoofoundation2'
-    start_urls = ['https://tw.bid.yahoo.com/tw/%E9%81%AE%E7%91%95%E8%86%8F-%E8%87%89%E9%83%A8%E5%BD%A9%E5%A6%9D-2092078671-category.html?.r=1585639662/']
+    start_urls = [
+        'https://tw.bid.yahoo.com/tw/%E9%81%AE%E7%91%95%E8%86%8F-%E8%87%89%E9%83%A8%E5%BD%A9%E5%A6%9D-2092078671-category.html?.r=1585639662/']
 
     page = 2
 
@@ -28,11 +29,14 @@ class Yahoofoundation2Spider(scrapy.Spider):
             item['product_name'] = items.find('span', {'class': 'BaseGridItem__itemInfo___3E5Bx'}).find('span', {
                 'class': 'BaseGridItem__title___2HWui'}).text
             item['product_price'] = items.find('span', {'class': 'BaseGridItem__price___31jkj'}).text.split()[
-                0].replace('/', '').replace('$','').replace(',','')
+                0].replace('/', '').replace('$', '').replace(',', '')
             item['product_url'] = items.find('a').attrs['href']
-            item['product_images'] = items.find('div',{'class':'SquareFence_wrap_3jTo2'}).find('img').attrs['src']
+            item['product_images'] = items.find(
+                'div', {'class': 'SquareFence_wrap_3jTo2'}).find('img').attrs['src']
             item['product_category'] = 'Foundation'
             item['product_source'] = 'Yahoo'
+            item['product_subcategory'] = 'concealer'
+
             yield item
 
         # self.action.pause(3)

@@ -8,7 +8,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 class YahoomakeuptoolsSpider(scrapy.Spider):
     name = 'yahoomakeuptools'
-    start_urls = ['https://tw.bid.yahoo.com/tw/%E5%BD%A9%E5%A6%9D%E7%94%A8%E5%85%B7-2092073590-category.html?.r=1586239909/']
+    start_urls = [
+        'https://tw.bid.yahoo.com/tw/%E5%BD%A9%E5%A6%9D%E7%94%A8%E5%85%B7-2092073590-category.html?.r=1586239909/']
 
     page = 2
 
@@ -28,11 +29,14 @@ class YahoomakeuptoolsSpider(scrapy.Spider):
             item['product_name'] = items.find('span', {'class': 'BaseGridItem__itemInfo___3E5Bx'}).find('span', {
                 'class': 'BaseGridItem__title___2HWui'}).text
             item['product_price'] = items.find('span', {'class': 'BaseGridItem__price___31jkj'}).text.split()[
-                0].replace('/', '').replace('$','').replace(',','')
+                0].replace('/', '').replace('$', '').replace(',', '')
             item['product_url'] = items.find('a').attrs['href']
-            item['product_images'] = items.find('div',{'class':'SquareFence_wrap_3jTo2'}).find('img').attrs['src']
+            item['product_images'] = items.find(
+                'div', {'class': 'SquareFence_wrap_3jTo2'}).find('img').attrs['src']
             item['product_category'] = 'MakeupTools'
             item['product_source'] = 'Yahoo'
+            item['product_subcategory'] = 'makeuptools'
+
             yield item
 
         # self.action.pause(3)
