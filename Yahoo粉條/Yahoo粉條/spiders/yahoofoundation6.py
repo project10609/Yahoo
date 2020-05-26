@@ -43,7 +43,7 @@ class Yahoofoundation6Spider(scrapy.Spider):
         # self.action.perform()
         next_page = 'https://tw.bid.yahoo.com/tw/%E7%B2%89%E6%A2%9D-%E8%87%89%E9%83%A8%E5%BD%A9%E5%A6%9D-2092081255-category.html?.r=1585639662&hpp=hp_category_2092073302&pg=' + str(
             Yahoofoundation6Spider.page)
-        if Yahoofoundation6Spider.page <= 100:
+        if Yahoofoundation6Spider.page <= 4:
             Yahoofoundation6Spider.page += 1
             url = next_page
             yield response.follow(url, callback=self.parse)

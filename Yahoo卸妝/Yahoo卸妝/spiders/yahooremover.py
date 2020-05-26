@@ -43,7 +43,7 @@ class YahooremoverSpider(scrapy.Spider):
         # self.action.perform()
         next_page = 'https://tw.bid.yahoo.com/tw/%E5%8D%B8%E5%A6%9D-2092078872-category.html?.r=1586239909&hpp=hp_category_2092073302&pg=' + str(
             YahooremoverSpider.page)
-        if YahooremoverSpider.page <= 100:
+        if YahooremoverSpider.page <= 4:
             YahooremoverSpider.page += 1
             url = next_page
             yield response.follow(url, callback=self.parse)

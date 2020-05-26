@@ -42,7 +42,7 @@ class Yahoolipstick2Spider(scrapy.Spider):
         # self.action.perform()
         next_page = 'https://tw.bid.yahoo.com/tw/%E5%94%87%E8%9C%9C-%E5%94%87%E9%83%A8%E5%BD%A9%E5%A6%9D-2092078680-category.html?.r=1587447687&hpp=hp_category_2092073302&pg=' + str(
             Yahoolipstick2Spider.page)
-        if Yahoolipstick2Spider.page <= 100:
+        if Yahoolipstick2Spider.page <= 4:
             Yahoolipstick2Spider.page += 1
             url = next_page
             yield response.follow(url, callback=self.parse)

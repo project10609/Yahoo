@@ -43,7 +43,7 @@ class YahooeyelinerSpider(scrapy.Spider):
         # self.action.perform()
         next_page = 'https://tw.bid.yahoo.com/tw/%E7%9C%BC%E7%B7%9A%E7%AD%86-%E7%9C%BC%E9%83%A8%E5%BD%A9%E5%A6%9D-2092078677-category.html?.r=1586239909&hpp=hp_category_2092073302&pg=' + str(
             YahooeyelinerSpider.page)
-        if YahooeyelinerSpider.page <= 100:
+        if YahooeyelinerSpider.page <= 4:
             YahooeyelinerSpider.page += 1
             url = next_page
             yield response.follow(url, callback=self.parse)

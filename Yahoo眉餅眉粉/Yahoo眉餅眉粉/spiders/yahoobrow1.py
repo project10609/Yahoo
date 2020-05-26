@@ -42,7 +42,7 @@ class Yahoobrow1Spider(scrapy.Spider):
         # self.action.perform()
         next_page = 'https://tw.bid.yahoo.com/tw/%E7%9C%89%E9%A4%85-%E7%9C%89%E7%B2%89-%E7%9C%BC%E9%83%A8%E5%BD%A9%E5%A6%9D-2092078674-category.html?.r=1585639662&hpp=hp_category_2092073302&pg=' + str(
             Yahoobrow1Spider.page)
-        if Yahoobrow1Spider.page <= 100:
+        if Yahoobrow1Spider.page <= 4:
             Yahoobrow1Spider.page += 1
             url = next_page
             yield response.follow(url, callback=self.parse)
